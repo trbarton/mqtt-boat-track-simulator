@@ -1,7 +1,7 @@
 var mqtt = require('mqtt')
 var fs = require('fs');
-var lineReader = require('line-reader');
-var client  = mqtt.connect('mqtt://localhost:1883')
+
+var client  = mqtt.connect('ws://localhost:3000')
 
 client.on('connect', function () {
     client.publish('boats', 'Publishing')
@@ -15,7 +15,7 @@ function beginPublishing () {
     if (counter < array.length) {
         client.publish('boats', array[counter])
         counter++
-        setTimeout(beginPublishing, 1000)
+        setTimeout(beginPublishing, 1)
     } else {
         client.end()
     }

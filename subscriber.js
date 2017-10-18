@@ -1,7 +1,8 @@
 var mqtt = require('mqtt')
-var client  = mqtt.connect('mqtt://localhost:1883')
+var client  = mqtt.connect('ws://localhost:3000')
 
 client.on('connect', function () {
+    console.log("Connected")
     client.subscribe('boats')
   })
    
